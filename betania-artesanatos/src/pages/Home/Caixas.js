@@ -1,13 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Carousel, Row, Media } from 'react-bootstrap';
-
-// Caixas
-import CaixaImg1 from '../../assets/caixas/Caixa-Barbara.jpg';
-import CaixaImg2 from '../../assets/caixas/Caixa-Barbara2.jpg';
-import CaixaImg3 from '../../assets/caixas/Caixa-Luciana.jpg';
-import CaixaImg4 from '../../assets/caixas/Caixa-Marrom.jpg';
-import CaixaImg5 from '../../assets/caixas/Caixa-Tete.jpg';
-import CaixaImg6 from '../../assets/caixas/Caixinhas-Azuis.jpg';
 
 
 import Caixa_next_icon from './Caixa_next_icon';
@@ -18,13 +10,62 @@ import "./styles.css";
 
 export default function Caixas() {
     const [index, setIndex] = useState(0);
+    const [images, setImages] = useState([]);
 
     const handleSelect = (selectedIndex, e) => {
+        console.log(selectedIndex);
         setIndex(selectedIndex);
     };
     const prev_icon = Caixa_prev_icon.apply();
     const next_icon = Caixa_next_icon.apply();
-    
+
+
+
+    const importAll = (r) => {
+        let images = [];
+        r.keys().map((item, index) => { images[index] = r(item); return undefined });
+        return images;
+    }
+
+    const width = window.innerWidth || document.documentElement.clientWidth ||
+        document.body.clientWidth;
+
+    useEffect(() => {
+
+        let images_per_section = 0;
+        const all_images = importAll(require.context('../../assets/caixas', false, /\.(png|jpe?g|svg)$/));
+
+        if (width < 576)
+            images_per_section = 1;
+        else if (width >= 576 & width < 768)
+            images_per_section = 2;
+        else if (width >= 768 & width < 992)
+            images_per_section = 2;
+        else if (width >= 992 & width < 1200)
+            images_per_section = 3;
+        else {
+            images_per_section = 4;
+        }
+        let images_to_show = [];
+        let pages = [];
+        let number_of_pages = Math.ceil(all_images.length / images_per_section);
+        let images_of_section = [];
+
+        for (let i = 0; i < number_of_pages; i++) {
+            pages.push(i);
+        }
+
+        for (let i = 0, k = 0; i < number_of_pages & k < all_images.length; i++) {
+            images_of_section = [];
+            for (let j = 0; j < images_per_section & k < all_images.length; j++, k++) {
+                images_of_section.push(all_images[k]);
+            }
+            images_to_show.push(images_of_section);
+
+        }
+        setImages(images_to_show);
+    }, [width]);
+
     return (
         <Container>
             <Row>
@@ -34,43 +75,25 @@ export default function Caixas() {
             </Row>
             <Row>
                 <Container fluid className="caixas-container">
-                    <Carousel  nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
-                        <Carousel.Item className="col-sm-12 col-sm-offset-1 clearfix " >
-                            <Media className="images-container">
-                                <img className="image-slider-first"
-                                    src={CaixaImg1}
-                                    alt="Caixa1"
-                            
-                                />
-                                <img className="image-slider"
-                                    src={CaixaImg2}
-                                    alt="Caixa2"
-                                />
+                    <Carousel nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
+                        {
+                            images.map((images_section, endereco) => (
+                                <Carousel.Item className="col-sm-12 col-sm-offset-1 clearfix " key={endereco} >
+                                    <Media className="images-container">
+                                        {
+                                                images_section.map(image => (
+                                                <img className="image-slider"
+                                                    src={image}
+                                                    alt="Caixa2"
+                                                    key={image}
+                                                />
+                                                ))
+                                        }
+                                    </Media>
+                                </Carousel.Item>
+                            ))
 
-                                <img className="image-slider"
-                                    src={CaixaImg3}
-                                    alt="Caixa3"
-                                />
-                                <img className="image-slider"
-                                    src={CaixaImg5}
-                                    alt="Caixa5"
-                                />
-                            </Media>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                        <img className="image-slider-first"
-                                    src={CaixaImg4}
-                                    alt="Caixa4"
-                                    width="31%"
-                                />
-                        <img className="image-slider"
-                                    src={CaixaImg6}
-                                    alt="Caixa6"
-                                    width="30%"
-                                />
-
-
-                        </Carousel.Item>
+                        }
                     </Carousel>
                 </Container>
             </Row>

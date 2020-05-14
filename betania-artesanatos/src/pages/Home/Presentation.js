@@ -14,9 +14,9 @@ export default function Presentaion() {
             <Image height="100px" src={PerfilImg} roundedCircle />
             <h3>Betânia Campos</h3>
             <h5>Acompanhe meus trabalhos nas redes sociais!</h5>
-            <SocialMediaIconsReact icon="facebook" size="50px" iconSize="5" borderWidth="5" roundness="50%" url="https://www.facebook.com/betaniaribeirocampos" />
-
-            <SocialMediaIconsReact icon="instagram" size="50px" iconSize="5" borderWidth="5" roundness="50%" url="https://www.instagram.com/betaniaartesanatos/" />
+            <SocialMediaIconsReact icon="instagram" borderColor="white" backgroundColor="salmon" iconColor="white" size="50px" iconSize="5" borderWidth="1" roundness="50%" url="https://www.instagram.com/betaniaartesanatos/" />
+            <SocialMediaIconsReact icon="facebook" borderColor="white" backgroundColor="salmon" iconColor="white" size="50px" iconSize="5" borderWidth="1" roundness="50%" url="https://www.facebook.com/betaniaribeirocampos" />
+            <SocialMediaIconsReact icon="phone" borderColor="white" backgroundColor="salmon" iconColor="white" size="50px" iconSize="5" borderWidth="1" roundness="50%" url="https://api.whatsapp.com/send?phone=5531993796563" />
 
         </Container>
     );

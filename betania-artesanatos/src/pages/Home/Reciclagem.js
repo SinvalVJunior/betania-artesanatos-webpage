@@ -8,7 +8,7 @@ import Caixa_prev_icon from './Caixa_prev_icon';
 import "./styles.css";
 
 
-export default function Vasos() {
+export default function Reciclagem() {
     const [index, setIndex] = useState(0);
     const [images, setImages] = useState([]);
 
@@ -70,7 +70,7 @@ export default function Vasos() {
         <Container>
             <Row>
                 <Container fluid className="Caixas-Label">
-                    <h1>Vasos</h1>
+                    <h1>Reciclagem</h1>
                 </Container>
             </Row>
             <Row>
