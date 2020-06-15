@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+
+
 .navbar {
     background-color: rgb(253, 192, 185);
     height: 80px;
@@ -14,6 +17,11 @@
     display: flex;
     max-width: 30px;
 }
+
+.carousel {
+    padding-top: 100px;
+}
+
 
 .image-brand {
     cursor: pointer;
@@ -42,6 +50,7 @@
     font: 400 100px Dancing Script;
     padding-top: 25px;
     padding-left: 50px;
+    width: 100%;
 }
 
 .caixas-container {
@@ -51,7 +60,7 @@
 }
 
 .images-container {
-    width: 80%;
+    width: 100%;
 }
 
 .image-slider-first {
@@ -63,7 +72,7 @@
 
 .image-slider {
     padding-left: 40px;
-    border-radius: 5px;
+    
     cursor: pointer;
     transition: 0.3s;
     max-width: 250px;
@@ -98,3 +107,53 @@
     width: 100%;
     padding-top: 100px;
 }
+
+@media only screen and (max-width: 900px) {
+    .Caixas-Label h1 {
+        color: salmon;
+        font: 400 45px Dancing Script;
+        padding-top: 105px;
+    }
+
+    .next-icon:after {
+        content: '>';
+        font-size: 55px;
+        color: salmon;
+        padding-left: 50px;
+    }
+    .Caixas-Label {
+        display: block;
+        width: 100%;
+    }
+    .caixas-container {
+        display: flex;
+        width: 100%;
+        max-width: 300px;
+    }
+    .image-slider-first {
+        padding-left: 150px;
+    }
+    .image-slider {
+        cursor: pointer;
+        transition: 0.3s;
+        max-width: 80px;
+        padding-left: 20px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        padding-top: 150px;
+    }
+    .presentation {
+        max-width: 200px;
+    }
+    .next-icon:after,
+    .prev-icon:after {
+        font-size: 25px;
+    }
+
+    .carousel-principal {
+        max-width: 400px;
+    }
+
+  }

@@ -13,7 +13,6 @@ export default function Caixas() {
     const [images, setImages] = useState([]);
 
     const handleSelect = (selectedIndex, e) => {
-        console.log(selectedIndex);
         setIndex(selectedIndex);
     };
     const prev_icon = Caixa_prev_icon.apply();
@@ -36,11 +35,11 @@ export default function Caixas() {
         const all_images = importAll(require.context('../../assets/caixas', false, /\.(png|jpe?g|svg)$/));
 
         if (width < 576)
-            images_per_section = 1;
+            images_per_section = 3;
         else if (width >= 576 & width < 768)
-            images_per_section = 2;
+            images_per_section = 3;
         else if (width >= 768 & width < 992)
-            images_per_section = 2;
+            images_per_section = 3;
         else if (width >= 992 & width < 1200)
             images_per_section = 3;
         else {
@@ -68,14 +67,11 @@ export default function Caixas() {
 
     return (
         <Container>
-            <Row>
                 <Container fluid className="Caixas-Label">
                     <h1>Caixas</h1>
                 </Container>
-            </Row>
             <Row>
-                <Container fluid className="caixas-container">
-                    <Carousel nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
+                    <Carousel className="caixas-container" indicators={false} nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
                         {
                             images.map((images_section, endereco) => (
                                 <Carousel.Item className="col-sm-12 col-sm-offset-1 clearfix " key={endereco} >
@@ -95,7 +91,6 @@ export default function Caixas() {
 
                         }
                     </Carousel>
-                </Container>
             </Row>
         </Container >
     );
