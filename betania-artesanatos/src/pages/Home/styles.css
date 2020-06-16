@@ -18,6 +18,10 @@
     max-width: 30px;
 }
 
+.spacer {
+    flex:3;
+}
+
 .carousel {
     padding-top: 100px;
 }
@@ -108,7 +112,26 @@
     padding-top: 100px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 768px) {
+    .navbar {
+        height: 140px;
+    }
+    .navbar-text {
+        color: salmon;
+        font: 400 5px Dancing Script;
+        text-align: left;
+    }
+    
+    .navbar-text a {
+        display: flex;
+        max-width: 30px;
+    }
+    .navbar-collapse {
+        text-align: center;
+        background-color: rgb(253, 192, 185);
+    }
+    
+
     .Caixas-Label h1 {
         color: salmon;
         font: 400 45px Dancing Script;
@@ -152,8 +175,5 @@
         font-size: 25px;
     }
 
-    .carousel-principal {
-        max-width: 400px;
-    }
 
   }

@@ -39,7 +39,7 @@ export default function Vasos() {
         else if (width >= 576 & width < 768)
             images_per_section = 3;
         else if (width >= 768 & width < 992)
-            images_per_section = 3;
+            images_per_section = 2;
         else if (width >= 992 & width < 1200)
             images_per_section = 3;
         else {
