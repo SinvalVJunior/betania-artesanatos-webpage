@@ -24,13 +24,13 @@ export default function NavMenu() {
         })
     }
     return (
-        <Navbar className="navbar" variant="light" fixed="top" >
+        <Navbar className="navbar" collapseOnSelect expand = "lg" variant="light" fixed="top" >
             <Navbar.Brand onClick={handleScrollToTop} className="image-brand">
                 <img src={LogoImg} height="70px" alt="Betania Artesanatos" />
             </Navbar.Brand>
             <Nav.Item>
                 <Container className="navbar-text">
-                    <h4>Entre em contato comigo!</h4>
+                    <h4>Me siga nas redes!</h4>
                 </Container>
             </Nav.Item>
             <Nav.Item>
@@ -38,14 +38,16 @@ export default function NavMenu() {
                 <SocialMediaIconsReact icon="facebook" borderColor="salmon" backgroundColor="salmon" iconColor="white" size="30px" iconSize="5" borderWidth="1" roundness="50%" url="https://www.facebook.com/betaniaribeirocampos" />
                 <SocialMediaIconsReact icon="phone" borderColor="salmon" backgroundColor="salmon" iconColor="white" size="30px" iconSize="5" borderWidth="1" roundness="50%" url="https://api.whatsapp.com/send?phone=5531993796563" />
             </Nav.Item>
-            <Container className="social-media-icons">
-            </Container>
+            <di class="spacer"></di>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse className="navbar-collapse" id="responsive-navbar-nav">
             <Nav className="mr-auto">
                 <Nav.Link onClick={handleScrollToTop}>Home</Nav.Link>
                 <Nav.Link onClick={handleScrollToCaixas}>Caixas</Nav.Link>
                 <Nav.Link href="/">Vasos</Nav.Link>
                 <Nav.Link href="/">Reciclagem</Nav.Link>
             </Nav>
+            </Navbar.Collapse>
         </Navbar>
     );
 }
