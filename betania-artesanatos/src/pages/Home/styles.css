@@ -18,6 +18,10 @@
     max-width: 30px;
 }
 
+.nav-item > .active {
+    border-bottom: 1px solid #333;
+}
+
 .spacer {
     flex:3;
 }
@@ -84,7 +88,8 @@
     
     cursor: pointer;
     transition: 0.3s;
-    max-width: 250px;
+    max-width: 250px !important;
+    
 }
 
 .image-slider:hover, .image-slider-first:hover {

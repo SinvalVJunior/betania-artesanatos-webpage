@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Carousel, Row, Media } from 'react-bootstrap';
+import ModalImage from "react-modal-image";
 
 import { Element } from 'react-scroll'
 
@@ -19,8 +20,6 @@ export default function Caixas() {
     const prev_icon = Caixa_prev_icon.apply();
     const next_icon = Caixa_next_icon.apply();
 
-
-
     const importAll = (r) => {
         let images = [];
         r.keys().map((item, index) => { images[index] = r(item); return undefined });
@@ -29,7 +28,7 @@ export default function Caixas() {
 
     const width = window.innerWidth || document.documentElement.clientWidth ||
         document.body.clientWidth;
-
+    
     useEffect(() => {
 
         let images_per_section = 0;
@@ -68,38 +67,40 @@ export default function Caixas() {
 
     return (
         <>
-        <Element name="caixas" className="element" >
-        </Element>
+            <Element name="caixas" className="element" >
+            </Element>
 
-        <Container>
+            <Container>
 
-            <Container fluid className="Caixas-Label">
-                <h1>Caixas</h1>
-            </Container>
-            <Row>
-                <Carousel className="caixas-container" indicators={false} nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
-                    {
-                        images.map((images_section, endereco) => (
-                            <Carousel.Item className="col-sm-12 col-sm-offset-1 clearfix " key={endereco} >
-                                <Media className="images-container">
-                                    {
-                                        images_section.map(image => (
-                                            <img className="image-slider"
-                                                src={image}
-                                                alt="Caixa2"
-                                                key={image}
-                                            />
-                                        ))
-                                    }
-                                </Media>
-                            </Carousel.Item>
-                        ))
+                <Container fluid className="Caixas-Label">
+                    <h1>Caixas</h1>
+                </Container>
+                <Row>
+                    <Carousel className="caixas-container" indicators={false} nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
+                        {
+                            images.map((images_section, endereco) => (
+                                <Carousel.Item className="col-sm-12 col-sm-offset-1 clearfix " key={endereco} >
+                                    <Media className="images-container">
+                                        {
+                                            images_section.map(image => (
+                                                <ModalImage className="image-slider"
+                                                    small={image}
+                                                    medium={image}
+                                                    large={image}
+                                                    key={image}
+                                                    hideDownload={true}
+                                                />
+                                            ))
+                                        }
+                                    </Media>
+                                </Carousel.Item>
+                            ))
 
-                    }
-                </Carousel>
-            </Row>
-        </Container >
-    </>
+                        }
+                    </Carousel>
+                </Row>
+            </Container >
+        </>
     );
 }
 

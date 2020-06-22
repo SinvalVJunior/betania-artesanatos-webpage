@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Carousel, Row, Media } from 'react-bootstrap';
 import { Element } from 'react-scroll'
+import ModalImage from "react-modal-image";
 
 
 import Caixa_next_icon from './Caixa_next_icon';
@@ -84,10 +85,12 @@ export default function Vasos() {
                                     <Media className="images-container">
                                         {
                                             images_section.map(image => (
-                                                <img className="image-slider"
-                                                    src={image}
-                                                    alt="Caixa2"
+                                                <ModalImage className="image-slider"
+                                                    small={image}
+                                                    medium={image}
+                                                    large={image}
                                                     key={image}
+                                                    hideDownload={true}
                                                 />
                                             ))
                                         }
