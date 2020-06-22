@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { SocialMediaIconsReact } from 'social-media-icons-react';
+import { Link, animateScroll as scroll} from 'react-scroll'
 
 
 import LogoImg from '../../assets/Betania-Artesanatos-Logo.png';
@@ -11,21 +12,13 @@ import "./styles.css";
 
 export default function NavMenu() {
 
-    function handleScrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    }
-    function handleScrollToCaixas() {
-        window.scrollTo({
-            top: 450,
-            behavior: 'smooth'
-        })
-    }
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    };
+    
     return (
-        <Navbar className="navbar" collapseOnSelect expand = "lg" variant="light" fixed="top" >
-            <Navbar.Brand onClick={handleScrollToTop} className="image-brand">
+        <Navbar className="navbar" collapseOnSelect expand="lg" variant="light" fixed="top" >
+            <Navbar.Brand className="image-brand">
                 <img src={LogoImg} height="70px" alt="Betania Artesanatos" />
             </Navbar.Brand>
             <Nav.Item>
@@ -41,12 +34,12 @@ export default function NavMenu() {
             <di class="spacer"></di>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="navbar-collapse" id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-                <Nav.Link onClick={handleScrollToTop}>Home</Nav.Link>
-                <Nav.Link onClick={handleScrollToCaixas}>Caixas</Nav.Link>
-                <Nav.Link href="/">Vasos</Nav.Link>
-                <Nav.Link href="/">Reciclagem</Nav.Link>
-            </Nav>
+                <Nav className="mr-auto">
+                    <Nav.Link onClick={scrollToTop} >Home</Nav.Link>
+                    <Nav.Link ><Link activeClass="active" className="caixas" to="caixas" spy={true} smooth={true} duration={500} offset={-70} >Caixas</Link></Nav.Link>
+                    <Nav.Link ><Link activeClass="active" className="vasos" to="vasos" spy={true} smooth={true} duration={500} offset={-70}>Vasos</Link></Nav.Link>
+                    <Nav.Link ><Link activeClass="active" className="reciclagem" to="reciclagem" spy={true} smooth={true} duration={500} offset={-70}>Reciclagem</Link></Nav.Link>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );

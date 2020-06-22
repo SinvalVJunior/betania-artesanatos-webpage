@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Carousel, Row, Media } from 'react-bootstrap';
+import { Element } from 'react-scroll'
 
 
 import Caixa_next_icon from './Caixa_next_icon';
@@ -34,14 +35,14 @@ export default function Vasos() {
         let images_per_section = 0;
         const all_images = importAll(require.context('../../assets/caixas', false, /\.(png|jpe?g|svg)$/));
 
-        if (width < 576)
-            images_per_section = 3;
-        else if (width >= 576 & width < 768)
-            images_per_section = 3;
-        else if (width >= 768 & width < 992)
-            images_per_section = 2;
-        else if (width >= 992 & width < 1200)
-            images_per_section = 3;
+        if (width < 400)
+            images_per_section = 4;
+        else if (width >= 400 & width < 500)
+            images_per_section = 4;
+        else if (width >= 500 & width < 600)
+            images_per_section = 5;
+        else if (width >= 600 & width < 1200)
+            images_per_section = 6;
         else {
             images_per_section = 4;
         }
@@ -66,26 +67,29 @@ export default function Vasos() {
     }, [width]);
 
     return (
-        <Container>
-            <Row>
-                <Container fluid className="Caixas-Label">
-                    <h1>Vasos</h1>
-                </Container>
-            </Row>
-            <Row>
+        <>
+            <Element name="vasos" className="element" >
+            </Element>
+            <Container>
+                <Row>
+                    <Container fluid className="Caixas-Label">
+                        <h1>Vasos</h1>
+                    </Container>
+                </Row>
+                <Row>
                     <Carousel className="caixas-container" indicators={false} nextIcon={next_icon} prevIcon={prev_icon} activeIndex={index} onSelect={handleSelect}>
                         {
                             images.map((images_section, endereco) => (
                                 <Carousel.Item className="col-sm-12 col-sm-offset-1 clearfix " key={endereco} >
                                     <Media className="images-container">
                                         {
-                                                images_section.map(image => (
+                                            images_section.map(image => (
                                                 <img className="image-slider"
                                                     src={image}
                                                     alt="Caixa2"
                                                     key={image}
                                                 />
-                                                ))
+                                            ))
                                         }
                                     </Media>
                                 </Carousel.Item>
@@ -93,8 +97,9 @@ export default function Vasos() {
 
                         }
                     </Carousel>
-            </Row>
-        </Container >
+                </Row>
+            </Container >
+        </>
     );
 }
 

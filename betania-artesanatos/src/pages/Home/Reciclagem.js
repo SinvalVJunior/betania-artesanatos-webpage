@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Carousel, Row, Media } from 'react-bootstrap';
+import { Element } from 'react-scroll'
 
 
 import Caixa_next_icon from './Caixa_next_icon';
@@ -34,14 +35,14 @@ export default function Reciclagem() {
         let images_per_section = 0;
         const all_images = importAll(require.context('../../assets/caixas', false, /\.(png|jpe?g|svg)$/));
 
-        if (width < 576)
-            images_per_section = 3;
-        else if (width >= 576 & width < 768)
-            images_per_section = 3;
-        else if (width >= 768 & width < 992)
-            images_per_section = 2;
-        else if (width >= 992 & width < 1200)
-            images_per_section = 3;
+        if (width < 400)
+            images_per_section = 4;
+        else if (width >= 400 & width < 500)
+            images_per_section = 4;
+        else if (width >= 500 & width < 600)
+            images_per_section = 5;
+        else if (width >= 600 & width < 1200)
+            images_per_section = 6;
         else {
             images_per_section = 4;
         }
@@ -66,6 +67,9 @@ export default function Reciclagem() {
     }, [width]);
 
     return (
+        <>
+        <Element name="reciclagem" className="element" >
+        </Element>
         <Container>
             <Row>
                 <Container fluid className="Caixas-Label">
@@ -95,6 +99,7 @@ export default function Reciclagem() {
                     </Carousel>
             </Row>
         </Container >
+        </>
     );
 }
 
